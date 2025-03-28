@@ -22,6 +22,14 @@ public class UserController {
         return "user/login-form";
     }
 
+    @PostMapping("/login")
+    public String login(UserRequest.LoginDTO loginDTO) {
+        User sessionUser = userService.로그인(loginDTO);
+        session.setAttribute("sessionUser", sessionUser);
+        return "redirect:/";
+    }
+
+
     @GetMapping("/join-form")
     public String joinForm() {
         return "user/join-form";
