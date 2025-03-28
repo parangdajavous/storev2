@@ -48,4 +48,17 @@ public class StoreController {
         return "redirect:/store/list";
     }
 
+
+    @GetMapping("/store/{id}/update-form")
+    public String updateForm(@PathVariable("id") int id, HttpServletRequest request) {
+        Store store = storeService.상세보기(id);
+        request.setAttribute("model", store);
+        return "store/update-form";
+    }
+
+    @PostMapping("/store/{id}/update")
+    public String update(@PathVariable("id") int id, StoreRequest.UpdateDTO updateDTO) {
+        storeService.상품수정(id, updateDTO);
+        return "redirect:/store/" + id;
+    }
 }

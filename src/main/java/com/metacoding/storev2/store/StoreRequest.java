@@ -11,4 +11,11 @@ public class StoreRequest {
         private Integer stock;
         private Integer price;
     }
+
+    @Data
+    public static class UpdateDTO {
+        private String name;
+        private Integer stock;
+        private Integer price;
+    }
 }

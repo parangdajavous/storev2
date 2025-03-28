@@ -4,6 +4,7 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.Query;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
@@ -34,6 +35,15 @@ public class StoreRepository {
     public void deleteById(int id) {
         Query query = em.createNativeQuery("delete from store_tb where id = ?");
         query.setParameter(1, id);
+        query.executeUpdate();
+    }
+
+    public void update(@PathVariable("id") int id, StoreRequest.UpdateDTO updateDTO) {
+        Query query = em.createNativeQuery("update store_tb set name = ?, stock = ?, price = ? where id = ?");
+        query.setParameter(1, updateDTO.getName());
+        query.setParameter(2, updateDTO.getStock());
+        query.setParameter(3, updateDTO.getPrice());
+        query.setParameter(4, id);
         query.executeUpdate();
     }
 }
