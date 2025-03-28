@@ -41,6 +41,11 @@ public class StoreController {
         request.setAttribute("model", store);
         return "store/detail";
     }
-    
+
+    @PostMapping("/store/{id}/delete")
+    public String delete(@PathVariable("id") int id) {
+        storeService.상품삭제(id);
+        return "redirect:/store/list";
+    }
 
 }
