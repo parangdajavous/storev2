@@ -41,5 +41,6 @@ public class StoreController {
         request.setAttribute("model", store);
         return "store/detail";
     }
+    
 
 }

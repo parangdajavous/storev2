@@ -3,17 +3,15 @@
 <div class="container mt-2">
 
     <div class="mt-4 p-5 bg-light text-dark rounded-4">
-        {{#model}}
-            <p>번호 : {{id}}</p>
-            <p>상품명 : {{name}}</p>
-            <p>상품가격 : {{price}}</p>
-            <p>상품재고 : {{stock}}</p>
-        {{/model}}
+        <p>번호 : {{model.id}}</p>
+        <p>상품명 : {{model.name}}</p>
+        <p>상품가격 : {{model.price}}</p>
+        <p>상품재고 : {{model.stock}}</p>
 
     </div>
 
     <div class="mt-3 mb-3">
-        <a href="#" class="btn btn-outline-primary">수정</a>
+        <a href="/store/update-form" class="btn btn-outline-primary">수정</a>
         <form action="#" method="POST" class="d-inline">
             <button type="submit" class="btn btn-outline-primary">삭제</button>
         </form>
