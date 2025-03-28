@@ -16,4 +16,6 @@ public class Store {
     private String name;
     private Integer stock;
     private Integer price;
+
+    
 }
