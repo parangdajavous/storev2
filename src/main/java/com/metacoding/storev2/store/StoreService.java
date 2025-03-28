@@ -10,7 +10,7 @@ public class StoreService {
     private final StoreRepository storeRepository;
 
     @Transactional
-    public void 상품등록(String name, int stock, int price) {
-        storeRepository.save(name, stock, price);
+    public void 상품등록(StoreRequest.SaveDTO saveDTO) {
+        storeRepository.save(saveDTO.getName(), saveDTO.getStock(), saveDTO.getPrice());
     }
 }

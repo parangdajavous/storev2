@@ -4,7 +4,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @RequiredArgsConstructor
 @Controller
@@ -17,11 +16,11 @@ public class StoreController {
     }
 
     @PostMapping("/store/save")
-    public String save(@RequestParam("name") String name, @RequestParam("stock") int stock, @RequestParam("price") int price) {
-        System.out.println("name" + name);
-        System.out.println("stock" + stock);
-        System.out.println("price" + price);
-        storeService.상품등록(name, stock, price);
+    public String save(StoreRequest.SaveDTO saveDTO) {
+        System.out.println("name: " + saveDTO.getName());
+        System.out.println("stock: " + saveDTO.getStock());
+        System.out.println("price: " + saveDTO.getPrice());
+        storeService.상품등록(saveDTO);
         return "redirect:/";
     }
 
