@@ -4,6 +4,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
@@ -33,4 +34,12 @@ public class StoreController {
         request.setAttribute("models", storeList);
         return "store/list";
     }
+
+    @GetMapping("/store/{id}")
+    public String detail(@PathVariable("id") int id, HttpServletRequest request) {
+        Store store = storeService.상세보기(id);
+        request.setAttribute("model", store);
+        return "store/detail";
+    }
+
 }
