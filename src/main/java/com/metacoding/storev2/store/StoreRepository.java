@@ -5,6 +5,8 @@ import jakarta.persistence.Query;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @RequiredArgsConstructor
 @Repository
 public class StoreRepository {
@@ -16,5 +18,10 @@ public class StoreRepository {
         query.setParameter(2, stock);
         query.setParameter(3, price);
         query.executeUpdate();
+    }
+
+    public List<Store> findAll() {
+        Query query = em.createNativeQuery("select * from store_tb order by id desc", Store.class);
+        return query.getResultList();
     }
 }
