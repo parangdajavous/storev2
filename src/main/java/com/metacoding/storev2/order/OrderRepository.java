@@ -31,4 +31,12 @@ public class OrderRepository {
         }
         return orderListPages;
     }
+
+    public void save(int storeId, int qty, int totalPrice) {
+        Query query = em.createNativeQuery("insert into order_tb(store_id,qty,total_price) values(?,?,?)");
+        query.setParameter(1, storeId);
+        query.setParameter(2, qty);
+        query.setParameter(3, totalPrice);
+        query.executeUpdate();
+    }
 }

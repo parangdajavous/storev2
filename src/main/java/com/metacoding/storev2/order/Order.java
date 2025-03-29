@@ -17,4 +17,6 @@ public class Order {
     private Integer userId;
     private Integer qty;
     private Integer totalPrice;
+
+
 }

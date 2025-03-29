@@ -37,13 +37,13 @@ public class StoreService {
     }
 
     @Transactional
-    public void 상품수정(int id, StoreRequest.UpdateDTO updateDTO) {
+    public void 상품수정(int id, String name, int stock, int price) {
         // 상품존재확인
         Store store = storeRepository.findById(id);
         if (store == null) {
             throw new RuntimeException("수정할 상품이 없습니다.");
         }
 
-        storeRepository.update(id, updateDTO);
+        storeRepository.update(id,name, stock, price);
     }
 }

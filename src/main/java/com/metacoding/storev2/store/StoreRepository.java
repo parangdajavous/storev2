@@ -38,11 +38,11 @@ public class StoreRepository {
         query.executeUpdate();
     }
 
-    public void update(@PathVariable("id") int id, StoreRequest.UpdateDTO updateDTO) {
+    public void update(@PathVariable("id") int id, String name, int stock, int price) {
         Query query = em.createNativeQuery("update store_tb set name = ?, stock = ?, price = ? where id = ?");
-        query.setParameter(1, updateDTO.getName());
-        query.setParameter(2, updateDTO.getStock());
-        query.setParameter(3, updateDTO.getPrice());
+        query.setParameter(1, name);
+        query.setParameter(2, stock);
+        query.setParameter(3, price);
         query.setParameter(4, id);
         query.executeUpdate();
     }
