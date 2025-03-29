@@ -2,12 +2,14 @@ package com.metacoding.storev2.user;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @RequiredArgsConstructor
 @Service
 public class UserService {
     private final UserRepository userRepository;
 
+    @Transactional
     public void 회원가입(UserRequest.JoinDTO joinDTO) {
         // 동일 회원 있는지 검사
         User user = userRepository.findByUsername(joinDTO.getUsername());

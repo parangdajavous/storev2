@@ -21,7 +21,7 @@ public class UserRepository {
         }
     }
 
-    @Transactional
+
     public void save(String username, String password, String fullname) {
         Query query = em.createNativeQuery("insert into user_tb(username,password,fullname,created_at) values(?,?,?,now())");
         query.setParameter(1, username);
